@@ -29,7 +29,7 @@ app.use('/card', cardRoutes)
 const PORT = process.env.PORT || 3000
 
 const start = async () => {
-	const url = `mongodb+srv://kpetunin:Mongo-Admin01@cluster0.a1bkr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+	const url = `mongodb+srv://kpetunin:Mongo-Admin01@cluster0.a1bkr.mongodb.net/shop`
 
 	try {
 		await mongoose.connect(url, { useNewUrlParser: true })
