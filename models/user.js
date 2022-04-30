@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose')
 
 const user = new Schema({
 	name: { type: String, required: true },
-	nickname: { type: String, required: true },
-	pass: { type: String, required: true },
+	// nickname: { type: String, required: true },
+	// pass: { type: String, required: true },
 	email: { type: String, required: true },
-	avatar: String,
+	// avatar: String,
 	cart: {
 		items: [
 			{
