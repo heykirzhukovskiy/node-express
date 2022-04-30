@@ -28,8 +28,25 @@ router.get('/:id/edit', async (req, res) => {
 router.post('/edit', async (req, res) => {
 	const { id } = req.body
 	delete req.body.id
-	await Course.findByIdAndUpdate(id, req.body)
-	res.redirect('/courses')
+
+	try {
+		await Course.findByIdAndUpdate(id, req.body)
+		res.redirect('/courses')
+	} catch (e) {
+		console.log(e)
+	}
+})
+
+router.post('/remove', async (req, res) => {
+	const { id } = req.body
+	delete req.body.id
+
+	try {
+		await Course.findByIdAndDelete(id, req.body)
+		res.redirect('/courses')
+	} catch (e) {
+		console.log(e)
+	}
 })
 
 router.get('/:id', async (req, res) => {
