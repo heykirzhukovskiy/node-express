@@ -5,7 +5,7 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 const mongoose = require('mongoose')
 const path = require('path')
 const addRoutes = require('./routes/add')
-const cardRoutes = require('./routes/card')
+const cartRoutes = require('./routes/cart')
 const coursesRoutes = require('./routes/courses')
 const homeRoutes = require('./routes/home')
 const User = require('./models/user')
@@ -24,10 +24,7 @@ app.set('views', 'views')
 
 app.use(async (req, res, next) => {
 	try {
-		const user = await User.findById('626c8941cd7ffa0456bd2a56')
-
-		req.user = user
-
+		req.user = await User.findById('626c8941cd7ffa0456bd2a56')
 		next()
 	} catch (e) {
 		console.log(e)
@@ -40,7 +37,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)
 app.use('/courses', coursesRoutes)
-app.use('/card', cardRoutes)
+app.use('/cart', cartRoutes)
 
 const PORT = process.env.PORT || 3000
 

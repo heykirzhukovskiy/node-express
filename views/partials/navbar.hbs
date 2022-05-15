@@ -3,30 +3,14 @@
     <a href="#" class="brand-logo">Приложение курсов</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-      {{#if isHome}}
-        <li class="active"><a href="/">Главная</a></li>
-      {{else}}
-        <li><a href="/">Главная</a></li>
-      {{/if}}
+      <li {{#if isHome}} class="active" {{/if}}><a href="/">Главная</a></li>
 
-      {{#if isCourses}}
-        <li class="active"><a href="/courses">Курсы</a></li>
-      {{else}}
-        <li><a href="/courses">Курсы</a></li>
-      {{/if}}
+      <li {{#if isCourses}} class="active" {{/if}}><a href="/courses">Курсы</a></li>
 
-      {{#if isAdd}}
-        <li class="active"><a href="/add">Добавить курс</a></li>
-      {{else}}
-        <li><a href="/add">Добавить курс</a></li>
-      {{/if}} 
+      <li {{#if isAdd}} class="active" {{/if}}><a href="/add">Добавить курс</a></li>
 
-      {{#if isCard}}
-        <li class="active"><a href="/card">Коризна</a></li>
-      {{else}}
-        <li><a href="/card">Коризна</a></li>
-      {{/if}} 
-      
+      <li {{#if iscart}} class="active" {{/if}}><a href="/cart">Корзина</a></li>
+
     </ul>
   </div>
 </nav>
