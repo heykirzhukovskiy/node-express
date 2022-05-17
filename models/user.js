@@ -16,7 +16,7 @@ const user = new Schema({
 	},
 })
 
-user.methods.addToCart = async function (course) {
+user.methods.addToCart = function (course) {
 	const items = [...this.cart.items]
 	const idx = items.findIndex(item => item.courseId.toString() === course._id.toString())
 
@@ -27,6 +27,20 @@ user.methods.addToCart = async function (course) {
 			courseId: course._id,
 			count: 1,
 		})
+	}
+
+	this.cart = { items }
+	return this.save()
+}
+
+user.methods.removeFromCart = function (courseId) {
+	const items = [...this.cart.items]
+	const idx = items.findIndex(item => item.courseId.toString() === courseId.toString())
+
+	if (items[idx].count === 1) {
+		items.splice(idx, 1)
+	} else {
+		items[idx].count--
 	}
 
 	this.cart = { items }
