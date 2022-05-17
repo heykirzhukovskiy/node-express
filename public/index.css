@@ -2,10 +2,6 @@
 	padding: 0 2rem;
 }
 
-.price {
-	font-size: 2rem;
-}
-
 .course {
 	width: 100%;
 	display: flex;
@@ -34,4 +30,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+li.collection-header::marker {
+	content: none;
 }

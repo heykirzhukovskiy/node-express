@@ -1,37 +1,29 @@
 <h1>Orders</h1>
 
-<div id='cart'>
-	{{#if courses.length}}
-		<table>
-			<thead>
-				<tr>
-					<th>Название</th>
-					<th>Цена (шт.)</th>
-					<th>Количество</th>
-					<th>Действия</th>
-				</tr>
-			</thead>
-			<tbody>
-
+{{#if orders.length}}
+	{{#each orders}}
+		<div class='collection with-header'>
+			<li class='collection-header'>
+				<h5>Order #{{_id}}</h5>
+			</li>
+			{{#if courses.length}}
 				{{#each courses}}
-					<tr>
-						<td>{{title}}</td>
-						<td>{{price}}</td>
-						<td>{{count}}</td>
-						<td>
-							<button class='btn btm-small js-remove' data-id='{{id}}'>Удалить</button>
-						</td>
-					</tr>
+					<a href='/courses/{{course.id}}' target='_blank' class='collection-item avatar'>
+						<img src='{{course.img}}' alt='{{course.title}}' class='circle' />
+						<span class='title'>{{course.title}}</span>
+						<p class='price'>{{course.price}}</p>
+						<p>
+							Count:
+							{{count}}
+						</p>
+					</a>
 				{{/each}}
-			</tbody>
-		</table>
-
-		<p><strong>Цена:</strong> <span class='price'>{{price}}</span></p>
-
-		<form action='/orders' method='post'>
-			<button type='submit' class='btn'>Сделать заказ</button>
-		</form>
-	{{else}}
-		<p>Корзина пуста</p>
-	{{/if}}
-</div>
+				<li class='collection-item'>Final: <span class='price'>{{price}}</span> <span>Date: {{date}}</span></li>
+			{{else}}
+				<p>You, mthf created empty order!</p>
+			{{/if}}
+		</div>
+	{{/each}}
+{{else}}
+	<p>You gotta order smth</p>
+{{/if}}
