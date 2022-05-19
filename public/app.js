@@ -1,13 +1,27 @@
-const toCurrency = price => {
-	return new Intl.NumberFormat('ru-RU', {
+const toCurrency = price =>
+	new Intl.NumberFormat('ru-RU', {
 		currency: 'rub',
 		style: 'currency',
 	}).format(price)
-}
 
-document.querySelectorAll('.price').forEach(node => {
-	node.textContent = toCurrency(node.textContent)
+const toDate = date =>
+	new Intl.DateTimeFormat('en-EN', {
+		day: '2-digit',
+		month: 'long',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+	}).format(date)
+
+document.querySelectorAll('.price').forEach(node => (node.textContent = toCurrency(node.textContent)))
+
+document.querySelectorAll('.date').forEach(node => {
+	console.log(node.textContent)
+	node.textContent = toDate(node.textContent)
 })
+
+const tabs = document.querySelectorAll('.tabs')
 
 const $cart = document.getElementById('cart')
 if ($cart) {
@@ -44,3 +58,5 @@ if ($cart) {
 		}
 	})
 }
+
+M.Tabs.init(tabs)

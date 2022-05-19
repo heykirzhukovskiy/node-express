@@ -1,18 +1,17 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Приложение курсов</a>
+    <a href="/" class="brand-logo"><img class="logo" src="/src/img/logo.svg" alt="Logotype"></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-      <li {{#if isHome}} class="active" {{/if}}><a href="/">Главная</a></li>
-
-      <li {{#if isCourses}} class="active" {{/if}}><a href="/courses">Курсы</a></li>
-
-      <li {{#if isAdd}} class="active" {{/if}}><a href="/add">Добавить курс</a></li>
-
-      <li {{#if isCart}} class="active" {{/if}}><a href="/cart">Корзина</a></li>
-
-      <li {{#if isOrders}} class="active" {{/if}}><a href="/orders">Заказы</a></li>
-
+      <li {{#if isHome}} class="active" {{/if}}><a href="/">Main</a></li>
+      <li {{#if isCourses}} class="active" {{/if}}><a href="/courses">Courses</a></li>
+      {{#if isAuthenticated}}
+        <li {{#if isAdd}} class="active" {{/if}}><a href="/add">Add course</a></li>
+        <li {{#if isCart}} class="active" {{/if}}><a href="/cart">Cart</a></li>
+        <li {{#if isOrders}} class="active" {{/if}}><a href="/orders">Orders</a></li>
+        <li><a href="/auth/logout">Log out</a></li>
+      {{else}}
+        <li {{#if isAuth}} class="active" {{/if}}><a href="/auth">Authorization</a></li>
+      {{/if}}
     </ul>
   </div>
 </nav>
