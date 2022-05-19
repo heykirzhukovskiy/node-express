@@ -14,7 +14,7 @@ const computeCartTotal = courses => courses.reduce((total, course) => total + co
 router.post('/add', async (req, res) => {
 	try {
 		const course = await Course.findById(req.body.id)
-		await req.user.addToCart(course)
+		await req.session.user.addToCart(course)
 		res.redirect('/cart')
 	} catch (error) {
 		console.log(error)
@@ -23,9 +23,9 @@ router.post('/add', async (req, res) => {
 
 router.delete('/remove/:id', async (req, res) => {
 	try {
-		await req.user.removeFromCart(req.params.id)
+		await req.session.user.removeFromCart(req.params.id)
 
-		const user = await req.user.populate('cart.items.courseId')
+		const user = await req.session.user.populate('cart.items.courseId')
 		const items = mapCartItems(user.cart)
 		const cart = {
 			items,
@@ -40,7 +40,7 @@ router.delete('/remove/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
 	try {
-		const user = await req.user.populate('cart.items.courseId')
+		const user = await req.session.user.populate('cart.items.courseId')
 
 		const courses = mapCartItems(user.cart)
 
