@@ -16,7 +16,7 @@ router.post("/", auth, async (req, res) => {
     title,
     price,
     img,
-    userId: req.session.user,
+    userId: req.user,
   });
 
   try {
