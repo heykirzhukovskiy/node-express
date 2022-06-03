@@ -10,21 +10,30 @@ router.get("/", (_req, res) => {
   });
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const user = await User.findById("626c8941cd7ffa0456bd2a56");
+    const { email, password } = req.body;
 
-    if (user) {
-      req.session.user = user;
-      req.session.isAuthenticated = true;
+    const candidate = await User.findOne({ email });
 
-      req.session.save((err) => {
-        if (err) {
-          throw err;
-        }
+    if (!candidate) {
+      res.redirect("/auth#login");
+    } else {
+      const isMatch = password === candidate.password;
 
-        res.redirect("/");
-      });
+      if (isMatch) {
+        req.session.user = candidate;
+        req.session.isAuthenticated = true;
+        req.session.save((e) => {
+          if (e) {
+            throw e;
+          }
+
+          res.redirect("/");
+        });
+      } else {
+        res.redirect("/auth#login");
+      }
     }
   } catch (e) {
     console.log(e);
