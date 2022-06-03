@@ -13,6 +13,30 @@ router.get("/", async (_req, res) => {
   });
 });
 
+router.get("/add", auth, (_req, res) => {
+  res.render("add", {
+    title: "Добавить курс",
+    isAdd: true,
+  });
+});
+
+router.post("/add", auth, async (req, res) => {
+  const { title, price, img } = req.body;
+  const course = new Course({
+    title,
+    price,
+    img,
+    userId: req.user,
+  });
+
+  try {
+    await course.save();
+    res.redirect("/courses");
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 router.get("/:id/edit", auth, async (req, res) => {
   if (!req.query.allow) {
     return res.redirect("/");

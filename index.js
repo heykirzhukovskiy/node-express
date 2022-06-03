@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const MongoStore = require("connect-mongodb-session")(session);
 const path = require("path");
 
-const addRoutes = require("./routes/add");
 const authRoutes = require("./routes/auth");
 const cartRoutes = require("./routes/cart");
 const coursesRoutes = require("./routes/courses");
@@ -48,7 +47,6 @@ app.use(varMiddleware);
 app.use(userMiddleware);
 
 app.use("/", homeRoutes);
-app.use("/add", addRoutes);
 app.use("/auth", authRoutes);
 app.use("/cart", cartRoutes);
 app.use("/courses", coursesRoutes);
@@ -56,9 +54,9 @@ app.use("/orders", ordersRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-const start = async () => {
+const start = async (uri, _callback) => {
   try {
-    await mongoose.connect(MONGODB_URL, { useNewUrlParser: true });
+    await mongoose.connect(uri, { useNewUrlParser: true });
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
@@ -68,4 +66,4 @@ const start = async () => {
   }
 };
 
-start();
+start(MONGODB_URL);
