@@ -41,4 +41,22 @@ router.get("/logout", async (req, res) => {
   }
 });
 
+router.post("/register", async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+
+    const candidate = await User.findOne({ email });
+
+    if (candidate) {
+      res.redirect("/auth#register");
+    } else {
+      const user = new User({ email, password, name });
+      await user.save();
+      res.redirect("/auth#login");
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 module.exports = router;

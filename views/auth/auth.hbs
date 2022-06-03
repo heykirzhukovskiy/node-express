@@ -3,7 +3,7 @@
 	<div class='col s12'>
 		<ul class='tabs'>
 			<li class='tab col s3 offset-s3'><a href='#login'>Sign in</a></li>
-			<li class='tab col s3'><a class='active' href='#registration'>Sing up</a></li>
+			<li class='tab col s3'><a href='#register'>Sing up</a></li>
 		</ul>
 	</div>
 
@@ -25,7 +25,7 @@
 		</form>
 	</div>
 
-	<div id='registration' class='col s6 offset-s3'>
+	<div id='register' class='col s6 offset-s3'>
 		<form action='/auth/register' method='POST'>
 			<div class='input-field'>
 				<input id='name' name='name' type='text' class='validate' required min='1' />
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class='input-field'>
-				<input id='confirm-password' name='password' type='password' class='validate' required min='6' />
+				<input id='confirm-password' name='repeat' type='password' class='validate' required min='6' />
 				<label for='confirm-password'>Confirm password</label>
 				<span class='helper-text' data-error='Input password'></span>
 			</div>
