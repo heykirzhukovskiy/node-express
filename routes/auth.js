@@ -6,7 +6,7 @@ const User = require("../models/user");
 const router = Router();
 
 router.get("/", (_req, res) => {
-  res.render("auth/auth", {
+  res.render("auth", {
     title: "Authorization",
     isAuth: true,
   });

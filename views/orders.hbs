@@ -1,34 +1,38 @@
 <h1>Orders</h1>
 
 {{#if orders.length}}
-	{{#each orders}}
-		<div class='collection with-header'>
-			<li class='collection-header'>
-				<h5>Order #{{_id}}</h5>
-			</li>
-			{{#if courses.length}}
-				{{#each courses}}
-					<a href='/courses/{{course.id}}' target='_blank' class='collection-item avatar'>
-						<img src='{{course.img}}' alt='{{course.title}}' class='circle' />
-						<span class='title'>{{course.title}}</span>
-						<p class='price'>{{course.price}}</p>
-						<p>
-							Count:
-							{{count}}
-						</p>
-					</a>
-				{{/each}}
-				<li class='collection-item'>
-					<p>Final:
-						<span class='price'>{{price}}</span>
-					</p>
-					<p>Date: <span class='date'>{{date}}</span></p>
-				</li>
-			{{else}}
-				<p>You, mthf created empty order!</p>
-			{{/if}}
-		</div>
-	{{/each}}
+  {{#each orders}}
+    <div class="collection with-header">
+      <li class="collection-header">
+        <h5>Order #{{_id}}</h5>
+      </li>
+      {{#if courses.length}}
+        {{#each courses}}
+          <a
+            href="/courses/{{course.id}}"
+            target="_blank"
+            class="collection-item avatar"
+          >
+            <img src="{{course.img}}" alt="{{course.title}}" class="circle" />
+            <span class="title">{{course.title}}</span>
+            <p class="price">{{course.price}}</p>
+            <p>
+              Count:
+              {{count}}
+            </p>
+          </a>
+        {{/each}}
+        <li class="collection-item">
+          <p>Final:
+            <span class="price">{{price}}</span>
+          </p>
+          <p>Date: <span class="date">{{date}}</span></p>
+        </li>
+      {{else}}
+        <p>You, mthf created empty order!</p>
+      {{/if}}
+    </div>
+  {{/each}}
 {{else}}
-	<p>You gotta order smth</p>
+  <p>You gotta order smth</p>
 {{/if}}

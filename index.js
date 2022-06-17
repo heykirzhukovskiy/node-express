@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const csrf = require("csurf");
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const {
@@ -43,6 +44,7 @@ app.use(
     store,
   })
 );
+app.use(csrf());
 app.use(varMiddleware);
 app.use(userMiddleware);
 
