@@ -29,9 +29,6 @@ G
 views/layouts/empty.hbs,f/2/f2d69ee9fb1ec761dc1efc9cd94e1103eaf16baa
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 w
 G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b/4/b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
 w
@@ -66,8 +63,6 @@ G.idea/sonarlint/issuestore/4/9/496a238a6afa168dbaf6efd37bb459331589579c,6/e/6e
 views/add.hbs,4/1/41a4db6ba3efa09ac7846fd85805929f0ad674f8
 @
 views/course.hbs,2/9/29c12c51af3ec69272edb1a6591ae785e143c263
-B
-constants/index.js,0/c/0ca12ba23d29cc84406fca25b60746e896b66e5b
 @
 views/orders.hbs,9/4/944248dae50479ae88c69ce7743ca7ffc3cbd235
 G
