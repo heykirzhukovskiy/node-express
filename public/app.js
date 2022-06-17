@@ -22,8 +22,6 @@ document.querySelectorAll(".date").forEach((node) => {
   node.textContent = toDate(new Date(node.textContent));
 });
 
-const tabs = document.querySelectorAll(".tabs");
-
 const $cart = document.getElementById("cart");
 if ($cart) {
   $cart.addEventListener("click", (event) => {
@@ -63,4 +61,17 @@ if ($cart) {
   });
 }
 
-M.Tabs.init(tabs);
+const tabs = document.querySelectorAll(".tabs");
+
+if (tabs) {
+  M.Tabs.init(tabs);
+}
+
+const error = document.querySelector(".error");
+
+if (error) {
+  M.toast({
+    html: error.textContent,
+    classes: "red accent-2",
+  });
+}

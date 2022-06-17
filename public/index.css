@@ -40,6 +40,10 @@ li::marker {
   padding-top: 20px;
 }
 
+.error {
+  display: none;
+}
+
 .brand-logo {
   height: 48px;
   top: 50%;

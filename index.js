@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const csrf = require("csurf");
+const flash = require("connect-flash");
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const {
@@ -45,6 +46,7 @@ app.use(
   })
 );
 app.use(csrf());
+app.use(flash());
 app.use(varMiddleware);
 app.use(userMiddleware);
 

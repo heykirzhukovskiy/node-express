@@ -5,10 +5,11 @@ const User = require("../models/user");
 
 const router = Router();
 
-router.get("/", (_req, res) => {
+router.get("/", (req, res) => {
   res.render("auth", {
     title: "Authorization",
     isAuth: true,
+    error: req.flash("error"),
   });
 });
 
@@ -19,6 +20,7 @@ router.post("/login", async (req, res) => {
     const candidate = await User.findOne({ email });
 
     if (!candidate) {
+      req.flash("error", "User not found");
       res.redirect("/auth#login");
     } else {
       const isMatch = await bcrypt.compare(password, candidate.password);
@@ -34,6 +36,7 @@ router.post("/login", async (req, res) => {
           res.redirect("/");
         });
       } else {
+        req.flash("error", "Wrong password");
         res.redirect("/auth#login");
       }
     }
@@ -59,6 +62,7 @@ router.post("/register", async (req, res) => {
     const candidate = await User.findOne({ email });
 
     if (candidate) {
+      req.flash("error", "User with such email already exists");
       res.redirect("/auth#register");
     } else {
       const hashedPassword = await bcrypt.hash(password, 12);
