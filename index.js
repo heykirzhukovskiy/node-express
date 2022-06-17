@@ -18,7 +18,7 @@ const homeRoutes = require("./routes/home");
 const ordersRoutes = require("./routes/orders");
 const varMiddleware = require("./middleware/variables");
 const userMiddleware = require("./middleware/user");
-const { MONGODB_URL } = require("./constants");
+const keys = require("./keys");
 
 const app = express();
 const hbs = exphbs.create({
@@ -28,7 +28,7 @@ const hbs = exphbs.create({
 });
 const store = new MongoStore({
   collection: "sessions",
-  uri: MONGODB_URL,
+  uri: keys.MONGODB_URL,
 });
 
 app.engine("hbs", hbs.engine);
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "my secret",
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store,
@@ -70,4 +70,4 @@ const start = async (uri, _callback) => {
   }
 };
 
-start(MONGODB_URL);
+start(keys.MONGODB_URL);
